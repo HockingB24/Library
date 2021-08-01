@@ -1,4 +1,6 @@
 var myLibrary = [];
+
+//Define book object
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -17,18 +19,21 @@ function Book(title, author, pages, read) {
     }
 }
 
+//Add Book function 
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+//Clear books out from MyLibrary
 function clearBooks() {
-    var tableRows = document.querySelectorAll('.row');
+    let tableRows = document.querySelectorAll('.row');
     for (i=0; i<tableRows.length; i++) {
         let row = tableRows[i];
         row.remove();
     }
 }
 
+//Views books through rendering table of all entries in MyLibrary
 
 function viewBooks() {
 
@@ -36,18 +41,18 @@ function viewBooks() {
 
     for (i = 0; i < myLibrary.length; i++) {
         thisBook = myLibrary[i];
-        var tableRow = document.createElement('tr');
+        let tableRow = document.createElement('tr');
         tableRow.classList.add("row");
         tableRow.setAttribute("id", i);
         tableBody.appendChild(tableRow);
 
-        var title = document.createElement('td');
+        let title = document.createElement('td');
         title.innerHTML = thisBook.title;
-        var author = document.createElement('td');
+        let author = document.createElement('td');
         author.innerHTML = thisBook.author;
-        var pages = document.createElement('td');
+        let pages = document.createElement('td');
         pages.innerHTML = thisBook.pages;
-        var read = document.createElement('td');
+        let read = document.createElement('td');
         read.innerHTML = thisBook.read;
 
         let readToggleCell = document.createElement('td');
@@ -78,6 +83,8 @@ function viewBooks() {
     }
 }
 
+
+//Toggle the Read Status of a book on the table
 function toggleRead (e) {
     readBtn = e.srcElement;
     readId = readBtn.id; 
@@ -98,7 +105,7 @@ function toggleRead (e) {
 
 }
 
-
+//Remove selected book from MyLibrary, re-render table
 function removeBook (e) {
     removeBtn = e.srcElement;
     let removedRow = removeBtn.id;
@@ -114,14 +121,14 @@ function removeBook (e) {
 
 
 
-
+//Make book object from form input
 function validateForm(e) {
     
     console.log("hi");
-    var fTitle = document.querySelector('#title').value;
-    var fAuthor = document.querySelector('#author').value;
-    var fPages = document.querySelector('#pages').value;
-    var fRead = document.querySelector('#read').value;
+    let fTitle = document.querySelector('#title').value;
+    let fAuthor = document.querySelector('#author').value;
+    let fPages = document.querySelector('#pages').value;
+    let fRead = document.querySelector('#read').value;
 
     let readSelect = "";
     if (fRead == "on") {
@@ -130,13 +137,15 @@ function validateForm(e) {
     else {
         readSelect = "No";
     }
-    var newBook = new Book(fTitle, fAuthor, fPages, readSelect);
+    let newBook = new Book(fTitle, fAuthor, fPages, readSelect);
     addBookToLibrary(newBook);
     viewBooks();
     formDiv.style.display = "none";
     e.preventDefault();
 }
 
+
+//Show form on button-click
 function showForm () {
     console.log('hi');
     formDiv.style.display = "block";
@@ -144,19 +153,20 @@ function showForm () {
 }
 
 
+//initializing variables 
 
-var table = document.querySelector('#tbl');
+let table = document.querySelector('#tbl');
 table.border = '1';
 
 
-var tableBody = document.createElement('TBODY');
+let tableBody = document.createElement('TBODY');
 table.appendChild(tableBody);
 
-var addBookForm = document.querySelector(".form");
+let addBookForm = document.querySelector(".form");
 addBookForm.addEventListener("submit", validateForm);
 
-var formDiv = document.querySelector('#formDiv');
-var newBookButton = document.querySelector('#newBookButton');
+let formDiv = document.querySelector('#formDiv');
+let newBookButton = document.querySelector('#newBookButton');
 newBookButton.addEventListener("click", showForm);
 
 
