@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1 id="heading">Your Library</h1>
+        <div id= "tableDiv">
+            <table id="tbl">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Number of Pages</th>
+                    <th>Already Read?</th>
+                    <th> Read Toggle</th>
+                    <th>Remove Book</th>
+                </tr>
+            </table>
+        </div>
+        <div id= "formDiv">
+            <form class="form" name="form" >
+                <label for="title" class="formElement">Title</label><br>
+                <input type="text" id="title" name="title" class="formElement"><br>
+                <label for="author" class="formElement">Author</label><br>
+                <input type="text" id="author" name="author" class="formElement"><br>
+                <label for="pages" class="formElement">Pages</label><br>
+                <input type="number" id="pages" name="pages" class="formElement" min="1"><br>
+                <label for="read" class="formElement">Read?</label><br>
+                <input type="checkbox" id="read" name="read" class="formElement"><br>
+                <input type="submit" id="submit" name="submit" class="formElement"><br>
+            </form>
+
+        </div>
+        <p id="newBookButton"> Add New Book</p>
+
+    <script src="scripts.js"></script>
+    </body>
+</html>
